@@ -6,6 +6,7 @@ const StudentView = (props) => {
   if (props.student.campus) {
     campusDisplay = (
       <div>
+        <Link to={`/students/${props.student.id}/edit`}><button>edit</button></Link>
         <h2>This student is registered to a campus</h2>
         <div className="student-campus">
           <img src={props.student.campus.imageUrl} alt="campus"></img>
