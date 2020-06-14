@@ -7,26 +7,26 @@ const AllStudentsView = (props) => {
     return <div className="all-studengs">There are no students</div>;
   }
 
-  return (
+  let displayStudent = (
     <div className="all-students">
-      <Link to="/students/new"><button>add student</button></Link>
+      <Link to="/students/new">
+        <button>add student</button>
+      </Link>
       {props.allStudents.map((students) => (
         <div key={students.id}>
           <img src={students.imageUrl} alt="student"></img>
           <Link to={`/students/${students.id}`}>
-            {" "}
             <h4>
               student name: {students.firstName} {students.lastName}
             </h4>
           </Link>
-          <Link to={`/campuses/${students.campus.id}`}>
-            {" "}
-            <h4>campus name: {students.campus.name}</h4>
-          </Link>
+          {/*add campus link if student is registered, else go to student' page */}
         </div>
       ))}
     </div>
   );
+
+  return <div>{displayStudent}</div>;
 };
 
 AllStudentsView.propTypes = {

@@ -7,6 +7,7 @@ const StudentView = (props) => {
     campusDisplay = (
       <div>
         <Link to={`/students/${props.student.id}/edit`}><button>edit</button></Link>
+        <button onClick={() => props.handleDelete(props.student.id)}>delete</button>
         <h2>This student is registered to a campus</h2>
         <div className="student-campus">
           <img src={props.student.campus.imageUrl} alt="campus"></img>
