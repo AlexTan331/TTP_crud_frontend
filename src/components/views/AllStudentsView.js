@@ -9,6 +9,7 @@ const AllStudentsView = (props) => {
 
   return (
     <div className="all-students">
+      <Link to="/students/new"><button>add student</button></Link>
       {props.allStudents.map((students) => (
         <div key={students.id}>
           <img src={students.imageUrl} alt="student"></img>
