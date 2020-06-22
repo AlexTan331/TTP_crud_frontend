@@ -16,15 +16,15 @@ const AllStudentsView = (props) => {
         <div key={students.id}>
           <img src={students.imageUrl} alt="student"></img>
           <Link to={`/students/${students.id}`}>
-            <h4>
+            <h4> 
               student name: {students.firstName} {students.lastName}
             </h4>
           </Link>
-          {/*add campus link if student is registered, else go to student' page */}
+          {/*add campus link if student is registered, else go to student's page */}
         </div>
       ))}
     </div>
-  );
+  )
 
   return <div>{displayStudent}</div>;
 };
