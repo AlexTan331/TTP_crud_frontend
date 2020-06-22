@@ -6,20 +6,38 @@ const StudentView = (props) => {
   if (props.student.campus) {
     campusDisplay = (
       <div>
-        <Link to={`/students/${props.student.id}/edit`}><button>edit</button></Link>
-        <button onClick={() => props.handleDelete(props.student.id)}>delete</button>
+        <Link to={`/students/${props.student.id}/edit`}>
+          <button>edit</button>
+        </Link>
+        <button onClick={() => props.handleDelete(props.student.id)}>
+          delete
+        </button>
         <h2>This student is registered to a campus</h2>
         <div className="student-campus">
           <img src={props.student.campus.imageUrl} alt="campus"></img>
           <Link to={`/campuses/${props.student.campus.id}`}>
             <h4>Campus name: {props.student.campus.name}</h4>
           </Link>
-          {/* <h4>{props.student.length} student</h4> */}
+          {/* <h4>{props.allCampuses[props.student.campus.id].students.length} student</h4> */}
         </div>
       </div>
     );
   } else {
-    campusDisplay = <p>This student is not registered to a campus.</p>;
+    campusDisplay = (
+      <div>
+        <p>This student is not registered to a campus.</p>
+        <form onSubmit={props.handleSubmit}> 
+        <select name="addtocampus" onChange={props.handleChange} required>
+          <option value="">Select campus</option>
+          {props.allCampuses.map((campus) => (
+            <option key={campus.id} value={campus.name}>{campus.name}</option>
+          ))}
+        </select>
+        <br></br>
+        <button>Add to campus</button>
+        </form>
+      </div>
+    );
   }
 
   return (
